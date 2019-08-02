@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--for material drop down-->
+    <declare-styleable name="MaterialDropDown">
+        <attr name="md_header_text_color" format="color"/>
+        <attr name="md_header_text_size" format="dimension"/>
+        <attr name="md_header_bg_color" format="color"/>
+        <attr name="md_text_color" format="color"/>
+        <attr name="md_text_size" format="dimension"/>
+        <attr name="md_arrow_src" format="integer"/>
+        <attr name="md_dropdown_bg_color" format="color"/>
+    </declare-styleable>
+</resources>
