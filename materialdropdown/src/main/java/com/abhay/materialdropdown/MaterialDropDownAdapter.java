@@ -16,12 +16,6 @@ public abstract class MaterialDropDownAdapter<T> extends RecyclerView.Adapter<Re
     private OnDropDownItemSelectedListener mOnDropDownItemSelectedListener;
     private InternalDropDownListener mInternalDropDownListener;
 
-    public void setSelectionPosition(int mSelectionPosition) {
-        this.mSelectionPosition = mSelectionPosition;
-    }
-
-    public int mSelectionPosition = 0;
-
     public abstract void onBindView(View view, int position, T data);
 
     public abstract void onItemSelected(int position, T data);
@@ -45,12 +39,6 @@ public abstract class MaterialDropDownAdapter<T> extends RecyclerView.Adapter<Re
         if (data != null) {
             final MaterialDropDownViewHolder materialDropDownViewHolder = (MaterialDropDownViewHolder) holder;
             onBindView(materialDropDownViewHolder.getRootView(), position,data );
-            if (mSelectionPosition == position) {
-                onItemSelected(position, data);
-                if (mOnDropDownItemSelectedListener != null) {
-                    mOnDropDownItemSelectedListener.onItemSelected(materialDropDownViewHolder.getRootView(), position);
-                }
-            }
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -109,7 +97,4 @@ public abstract class MaterialDropDownAdapter<T> extends RecyclerView.Adapter<Re
         mInternalDropDownListener.onInternalDropDownItemSelected(s);
     }
 
-    void setPositionSelection(int positionSelection){
-        this.mSelectionPosition = positionSelection;
-    }
 }

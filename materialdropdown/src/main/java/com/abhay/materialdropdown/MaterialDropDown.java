@@ -3,8 +3,6 @@ package com.abhay.materialdropdown;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -17,6 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class MaterialDropDown extends RelativeLayout {
 
     private OnDropDownItemSelectedListener mOnDropDownItemSelectedListener;
 
-    private boolean mDownArrowEnabled = true, mDefaultSelectionDone = false;
+    private boolean mDownArrowEnabled = true;
     private int mSelectionPosition = 0;
 
 
@@ -152,17 +153,13 @@ public class MaterialDropDown extends RelativeLayout {
         @Override
         public void onInternalDropDownItemSelected(String title) {
             changeHeaderText(title);
-            if (mDefaultSelectionDone) {
-                mPopupWindow.dismiss();
-            }
-            mDefaultSelectionDone = true;
+            mPopupWindow.dismiss();
         }
     };
 
     private void setInternalAdapter() {
         mDropDownAdapter.setOnInternalItemSelectedListener(mInternalDropDownListener);
         mDropDownAdapter.setOnItemSelectedListener(mOnDropDownItemSelectedListener);
-        mDropDownAdapter.setPositionSelection(mSelectionPosition);
         this.mRecyclerView.setAdapter(mDropDownAdapter);
         mPopupWindow.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
     }
